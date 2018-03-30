@@ -23,8 +23,9 @@ void main()
     int count_soldier,count_captain_item,count_hierophant_item;
     int specialism_captain_size,specialism_hierophant_size;
     int specialism_captain_index,specialism_hierophant_index;
-    char squad_name[20];
     int squad_index[8],items_captain_index[6],items_hierophant_index[4];
+    char squad_name[20];
+    char public_state[2];
     char *specialism_captain[]={"specialism_1","specialism_2","specialism_3","specialism_4"};
     char *specialism_hierophant[]={"specialism_1","specialism_2","specialism_3","specialism_4"};
     char *items[]={"item1","item2","item3","item4","item5","item6","item7","item8","item9","item10",\
@@ -54,12 +55,17 @@ void main()
     printf("****************STEP ONE:NAME*********************\n");
     printf("Please enter squad name:\n");
     scanf("%s",&squad_name);
+    printf("\nOKAY!\n");
+    Sleep(1000);
+    printf("Do you want to public your squad?y/n\n");
+    scanf("%s",&public_state);
+    //public_state=getchar();
 
     /*get captain specialism*/
     printf("\nOKAY!\n");
     Sleep(1000);
     printf("\n\n****************STEP TWO:SPECIALISM*********************\n");
-    printf("\nPlease choose one specialism for captain:\nCaptain specialism:\n");
+    printf("\nPlease choose one specialism for captain by enter the number:\nCaptain specialism:\n");
     for(int i=0;i<specialism_captain_size;i++)
         printf("\t%d:%s\n",i+1,specialism_captain[i]);
     scanf("%d",&specialism_captain_index);
@@ -101,6 +107,7 @@ void main()
     Sleep(1000);
     printf("\n\n****************RESULTS*********************\n");
     printf("THANK YOU FOR YOUR PATIENCE,HERE IS YOUR SQUAD:\n\nNAME:%s\n\n",&squad_name);//name
+    printf("PUBLIC_STATE:%s\n\n",public_state);
     printf("CAPTAIN SPECIALISM:%s\n",specialism_captain[specialism_captain_index-1]);//specialism
     printf("\nHIEROPHANT SPECIALISM:%s\n",specialism_hierophant[specialism_hierophant_index-1]);
     printf("\nSQUAD MEMBER:\n");//squad members
@@ -195,7 +202,7 @@ int choose_items_captain(int *items_captain_index,char **items)
     printf("\nplease choose items for captain:\n\n");
     for(int i=0;i<14;i++)
         printf("%d: %s\n",i+1,items[i]);
-    printf("\nPlease enter up to 6 items for captain in a single line, up to 2 can be weapons,separate by comma and end by #:\n");
+    printf("\nPlease enter up to 6 items for captain in a single line,\nup to 2 can be weapons,separate by comma and end by #:\n");
     /*read in the chosen items number*/
     do
     {
@@ -261,7 +268,7 @@ int choose_items_hierophant(int *items_captain_index,int *items_hierophant_index
             if(i+1==items_captain_index[j])flag1=1;
         if(!flag1)printf("%d: %s\n",i+1,items[i]);
     }
-    printf("\nPlease enter up to 4 items for hierophant in a single line, up to 1 can be weapons,separate by comma and end by #:\n");
+    printf("\nPlease enter up to 4 items for hierophant in a single line,\nup to 1 can be weapons,separate by comma and end by #:\n");
 
     /*read in the chosen items number*/
     do
